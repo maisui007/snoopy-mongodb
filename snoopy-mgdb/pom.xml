@@ -1,0 +1,225 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.snoopy.mongodb</groupId>
+  <artifactId>snoopy-mongodb</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>snoopy-mongodb Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+  <spring.version>4.3.5.RELEASE</spring.version>
+  <slf4j.version>1.5.8</slf4j.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!--MongoDB JDBC start-->
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongo-java-driver</artifactId>
+      <version>3.2.2</version>
+    </dependency>
+    <!--MongoDB JDBC end-->
+
+
+
+
+
+    <!--spring start-->
+    <!--spring-core start-->
+    <!--core 是spring框架基本的核心工具类。spring其他组件都使用到这个jar的类
+    是其他组件的基本核心-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <!--spring-core end-->
+
+    <!--spring-beans start-->
+    <!--beans是基本的jar.他包含访问配置文件，创建和管理bean，及控制反转，注入操作的所有xiangg
+    类。如果只用到IOC/DI，则只需引入core与beans-->
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <!--spring-beans end-->
+
+    <!--spring-aop start-->
+    <!--aop主要用于面向切面编程，在使用aop的特征进行事物管理的时候需要jar
+    -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <!--spring-aop end-->
+
+    <!--spring-context start-->
+    <!--这个jar文件为Spring 核心提供了大量扩展。可以找到使用Spring ApplicationContext
+    特性时所需要的全部类，JDNI所需的全部类，UI方面的用来与模板(Templating)
+    引擎如Velocity、FreeMarker、JasperReports集成的类，以及校验
+    Validation方面的相关类
+    -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <!--spring-context end-->
+
+    <!--spring-dao start-->
+    <!--这个jar文件包含Spring DAO、Spring Transaction进行数据访问所有类
+    为了使用声明型事务支持，还需要在应用里包含spring-aop.jar
+    -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-dao -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-dao</artifactId>
+      <version>2.0.8</version>
+    </dependency>
+
+    <!--spring-dao end-->
+
+    <!--spring-hibernate start-->
+    <!--这个jar包含spring对Hibernate 2 Hibernate 3 进行封装的所有类-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-hibernate -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-hibernate</artifactId>
+      <version>1.2.9</version>
+    </dependency>
+
+    <!--spring-hibernate end-->
+
+    <!--spring-jdbc start-->
+    <!--这个jar文件包含对Spring对JDBC数据访问进行封装的所有类-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <!--spring-jdbc end-->
+
+    <!--spring-orm start-->
+    <!--这个jar文件包含Spring对DAO特性集进行了扩展，使其支持iBATIS、JDO、
+    OJB、TopLink，因为Hibernate已经独立成包了，现在不包含在这个包里，这个jar文件里
+    大部分类都依赖spring-dao.jar里的类。用这个包时要同时包含spring-dao.jar
+    -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <!--spring-orm end-->
+
+    <!--spring-remoting start-->
+    <!--这个jar文件包含EJB JMS、远程调用Remoting(RMI、Hessian、Burlap、
+    Http Invoker、JAX-RPC)方面的类-->
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-remoting -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-remoting</artifactId>
+      <version>2.0.8</version>
+    </dependency>
+
+    <!--spring-remoting end-->
+
+    <!--spring-support start-->
+    <!--这个jar文件包含支持缓存Cache(ehcache)、JCA、JMX、邮件服务(Java Mail
+    、COS Mail)、任务计划Scheduling(Timer、Quartz)方面的类
+    -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-support -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-support</artifactId>
+      <version>2.0.8</version>
+    </dependency>
+
+    <!--spring-support end-->
+
+    <!--spring-web start-->
+    <!--这个jar文件包含Web应用开发时，用到Spring框架时所需要的核心类
+    包括自动载入WebApplicationContext特性的类、Struts与JSF集成类、
+    文件上传的支持类、Filter类和大量工具辅助类
+    -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <!--spring-web end-->
+
+    <!--spring-webmvc start-->
+    <!--这个jar文件包含Spring MVC框架相关的所有类。
+    包含国际化、标签、Theme、视图展现的FreeMarker、
+    JasperReports、Tiles、Velocity、XSLT相关类。
+    当然，如果应该使用了独立的MVC框架，则无需这个JAR文件里的任何类-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <!--spring-webmvc end-->
+
+    <!--spring-mock start-->
+    <!--这个jar文件包含Spring一整套mock类辅助应用的测试-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-mock -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-mock</artifactId>
+      <version>2.0.8</version>
+    </dependency>
+    <!--spring-mock end-->
+    <!--spring end-->
+
+    <!--log start-->
+    <!--slf4j start-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <!--slf4j end-->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.14</version>
+    </dependency>
+    <!--log end-->
+
+  </dependencies>
+  <build>
+    <finalName>snoopy-mongodb</finalName>
+  </build>
+</project>
